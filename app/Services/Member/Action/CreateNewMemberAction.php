@@ -4,8 +4,9 @@ namespace App\Services\Member\Action;
 
 use App\Exceptions\MemberExceptions\MemberNotSavedException;
 use App\Models\Member;
-use App\Repositories\Write\MemberWriteRepository\MemberWriteRepository;
+use App\Repositories\Write\Member\MemberWriteRepository;
 use App\Services\Member\Dto\CreateNewMemberDto;
+use App\Services\Member\Dto\MemberDto;
 
 class CreateNewMemberAction
 {
@@ -15,7 +16,7 @@ class CreateNewMemberAction
     /**
      * @throws MemberNotSavedException
      */
-    public function run(CreateNewMemberDto $dto): bool
+    public function run(MemberDto $dto): bool
     {
         $member = Member::staticCreate($dto);
 

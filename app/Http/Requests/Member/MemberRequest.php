@@ -36,14 +36,8 @@ class MemberRequest extends FormRequest
                 'required',
                 'integer'
             ],
-            self::MENTOR_ID => [
-                'nullable',
-                'integer'
-            ],
-            self::MANUAL_BUSYNESS => [
-                'nullable',
-                'integer'
-            ]
+            self::MENTOR_ID => 'nullable | integer',
+            self::MANUAL_BUSYNESS => 'nullable | integer'
         ];
     }
 

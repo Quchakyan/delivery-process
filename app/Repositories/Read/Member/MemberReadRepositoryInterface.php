@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Read\MemberReadRepository;
+namespace App\Repositories\Read\Member;
 
 interface MemberReadRepositoryInterface
 {

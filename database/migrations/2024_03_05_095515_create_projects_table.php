@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('owner_id');
+            $table->unsignedBigInteger('owner_id');
             $table->unsignedBigInteger('rate');
-            $table->integer('currency_id');
+            $table->unsignedBigInteger('currency_id');
             $table->timestamps();
         });
     }

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Repositories\Read\MemberReadRepository;
+namespace App\Repositories\Read\Member;
 
 use App\Models\Member;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+
 class MemberReadRepository implements MemberReadRepositoryInterface
 {
     public function query(): Builder
@@ -21,8 +22,4 @@ class MemberReadRepository implements MemberReadRepositoryInterface
         return $this->query()->find($id)->first();
     }
 
-    public function haveStudents(int $id): bool
-    {
-        return !!$this->query()->where('mentor_id', $id)->first();
-    }
 }

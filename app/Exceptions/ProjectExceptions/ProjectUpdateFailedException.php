@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Exceptions\MemberExceptions;
+namespace App\Exceptions\ProjectExceptions;
 
 use App\Exceptions\BusinessLogicException;
 
-class MemberUpdateFailedException extends BusinessLogicException
+class ProjectUpdateFailedException extends BusinessLogicException
 {
-
     public function getStatus(): int
     {
         return BusinessLogicException::UPDATING_ERROR;
@@ -14,6 +13,6 @@ class MemberUpdateFailedException extends BusinessLogicException
 
     public function getStatusMessage(): string
     {
-        return "Failed to update member";
+        return "Failed to update project";
     }
 }

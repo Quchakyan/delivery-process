@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Write\MemberWriteRepository;
+namespace App\Repositories\Write\Member;
 
 use App\Exceptions\MemberExceptions\MemberNotSavedException;
 use App\Models\Member;

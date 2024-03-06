@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('lastname');
-            $table->integer('role_id');
-            $table->integer('position_id');
-            $table->integer('mentor_id')->nullable();
-            $table->unsignedBigInteger('automatic_busyness');
+            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('position_id');
+            $table->unsignedBigInteger('mentor_id')->nullable();
+            $table->unsignedBigInteger('automatic_busyness')->default(0);
             $table->unsignedBigInteger('manual_busyness');
             $table->timestamps();
         });

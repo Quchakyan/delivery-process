@@ -12,9 +12,9 @@ use App\Http\Controllers\MemberController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/', [MemberController::class,'index']);
+Route::get('/', [MemberController::class, 'index'])->name('members');
 
-//Route::prefix('/members')->group([
-//    Route::get('/', [MemberController::class, 'index'])->name('members'),
-//    Route::post('/', [MemberController::class, 'create']),
-//]);
+Route::prefix('/member')->group(function () {
+    Route::post('', [MemberController::class, 'create']);
+    Route::patch('',[MemberController::class, 'update']);
+});

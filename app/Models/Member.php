@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Services\Member\Dto\MemberDto;
+use App\Services\Member\Dto\UpdateMemberDto;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,20 +24,31 @@ class Member extends Model
 {
     use HasFactory;
 
-    public static function staticCreate($data): self {
-
+    public static function staticCreate(MemberDto $dto): self {
         $member = new self();
 
-        $member->setRoleId($data->id);
-        $member->setPositionId($data->positionId);
-        $member->setName($data->name);
-        $member->setLastname($data->lastname);
-        $member->setMentorId($data->mentorId);
-        $member->setManualBusyness($data->manualBusyness);
+        $member->setRoleId($dto->roleId);
+        $member->setPositionId($dto->positionId);
+        $member->setName($dto->name);
+        $member->setLastname($dto->lastname);
+        $member->setMentorId($dto->mentorId);
+        $member->setManualBusyness($dto->manualBusyness);
 
         $member->save();
 
         return $member;
+    }
+
+    public function updateSelf(UpdateMemberDto $dto): self
+    {
+        $this->setRoleId($dto->roleId);
+        $this->setPositionId($dto->positionId);
+        $this->setName($dto->name);
+        $this->setLastname($dto->lastname);
+        $this->setMentorId($dto->mentorId);
+        $this->setManualBusyness($dto->manualBusyness);
+
+        return $this;
     }
 
     public function setRoleId(int $roleId): void
@@ -45,7 +58,7 @@ class Member extends Model
 
     public function setPositionId(int $positionId): void
     {
-        $this->role_id = $positionId;
+        $this->position_id = $positionId;
     }
 
     public function setName(string $name): void
@@ -58,12 +71,12 @@ class Member extends Model
         $this->lastname = $lastname;
     }
 
-    public function setMentorId(int $id): void
+    public function setMentorId(?int $id): void
     {
         $this->mentor_id = $id;
     }
 
-    public function setManualBusyness(int $manualBusyness): void
+    public function setManualBusyness(?int $manualBusyness): void
     {
         $this->manual_busyness = $manualBusyness;
     }

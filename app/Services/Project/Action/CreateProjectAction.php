@@ -15,10 +15,8 @@ class CreateProjectAction
     /**
      * @throws ProjectNotSavedException
      */
-    public function run(ProjectDto $dto): bool
+    public function run(ProjectDto $dto): Project
     {
-        $project = Project::staticCreate($dto);
-
-        return $this->projectWriteRepository->save($project);
+        return $this->projectWriteRepository->create($dto);
     }
 }

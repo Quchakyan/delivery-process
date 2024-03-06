@@ -12,9 +12,9 @@ class MemberReadRepository implements MemberReadRepositoryInterface
     {
         return Member::query();
     }
-    public function index(): Collection|array
+    public function index(): Collection | array
     {
-        return $this->query()->get();
+        return $this->query()->with('position')->get(['name','lastname','position_id']);
     }
 
     public function getById(int $id): Member
@@ -22,4 +22,8 @@ class MemberReadRepository implements MemberReadRepositoryInterface
         return $this->query()->find($id)->first();
     }
 
+    public function getWithStudents(): Collection
+    {
+        return $this->query()->withWhereHas('students')->get();
+    }
 }

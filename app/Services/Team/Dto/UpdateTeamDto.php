@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Services\Project\Dto;
+namespace App\Services\Team\Dto;
 
-use App\Http\Requests\Project\UpdateProjectRequest;
+use App\Http\Requests\Team\UpdateTeamRequest;
 
 /**
  * @property int $id;
  */
 
-class ProjectUpdateDto extends ProjectDto
+class UpdateTeamDto extends TeamDto
 {
-    public function __construct(UpdateProjectRequest $request)
+    public function __construct(UpdateTeamRequest $request)
     {
         $this->id = $request->getId();
         parent::__construct($request);

@@ -24,61 +24,46 @@ class Member extends Model
 {
     use HasFactory;
 
-    public static function staticCreate(MemberDto $dto): self {
-        $member = new self();
-
-        $member->setRoleId($dto->roleId);
-        $member->setPositionId($dto->positionId);
-        $member->setName($dto->name);
-        $member->setLastname($dto->lastname);
-        $member->setMentorId($dto->mentorId);
-        $member->setManualBusyness($dto->manualBusyness);
-
-        $member->save();
-
-        return $member;
-    }
-
-    public function updateSelf(UpdateMemberDto $dto): self
+    public function setRoleId(int $roleId): self
     {
-        $this->setRoleId($dto->roleId);
-        $this->setPositionId($dto->positionId);
-        $this->setName($dto->name);
-        $this->setLastname($dto->lastname);
-        $this->setMentorId($dto->mentorId);
-        $this->setManualBusyness($dto->manualBusyness);
+        $this->role_id = $roleId;
 
         return $this;
     }
 
-    public function setRoleId(int $roleId): void
-    {
-        $this->role_id = $roleId;
-    }
-
-    public function setPositionId(int $positionId): void
+    public function setPositionId(int $positionId): self
     {
         $this->position_id = $positionId;
+
+        return $this;
     }
 
-    public function setName(string $name): void
+    public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
     }
 
-    public function setLastname(string $lastname): void
+    public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
+
+        return $this;
     }
 
-    public function setMentorId(?int $id): void
+    public function setMentorId(?int $id): self
     {
         $this->mentor_id = $id;
+
+        return $this;
     }
 
-    public function setManualBusyness(?int $manualBusyness): void
+    public function setManualBusyness(?int $manualBusyness): self
     {
         $this->manual_busyness = $manualBusyness;
+
+        return $this;
     }
 
     public function role(): BelongsTo
@@ -91,13 +76,8 @@ class Member extends Model
         return $this->belongsTo(Position::class, 'position_id');
     }
 
-    public function mentor(): HasOne | null
-    {
-        return $this->hasOne(Member::class, 'mentor_id');
-    }
-
     public function students(): HasMany | null
     {
-        return $this->hasMany(Member::class);
+        return $this->hasMany(Member::class, 'mentor_id');
     }
 }

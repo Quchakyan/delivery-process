@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Project\ProjectRequest;
 use App\Http\Requests\Project\UpdateProjectRequest;
+use App\Repositories\Read\Project\ProjectReadRepository;
 use App\Services\Project\Action\CreateProjectAction;
 use App\Services\Project\Action\UpdateProjectAction;
 use App\Services\Project\Dto\ProjectDto;
@@ -13,12 +14,13 @@ class ProjectController extends Controller
 {
     public function __construct(
         protected CreateProjectAction $createProjectAction,
-        protected UpdateProjectAction $updateProjectAction
+        protected UpdateProjectAction $updateProjectAction,
+        protected ProjectReadRepository $projectReadRepository
     )
     {}
     public function index()
     {
-        //
+        return $this->projectReadRepository->index();
     }
     public function create(ProjectRequest $request)
     {
@@ -27,6 +29,7 @@ class ProjectController extends Controller
 
         $this->createProjectAction->run($dto);
 
+        //change return
         return response()->json(["success"=>true]);
     }
 
@@ -36,6 +39,7 @@ class ProjectController extends Controller
 
         $this->updateProjectAction->run($dto);
 
+        //change return
         return response()->json(["updated"=>true]);
     }
 }

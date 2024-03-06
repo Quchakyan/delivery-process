@@ -21,57 +21,39 @@ class Project extends Model
 {
     use HasFactory;
 
-    public static function staticCreate(ProjectDto $dto): self
+    public function setName(string $name): self
     {
-        $project = new self();
-
-        $project->setName($dto->name);
-        $project->setOwnerId($dto->ownerId);
-        $project->setRate($dto->rate);
-        $project->setCurrencyId($dto->currencyId);
-        $project->setBid($dto->bid);
-
-        $project->save();
-
-        return $project;
-    }
-
-    public function updateSelf(ProjectUpdateDto $dto): self
-    {
-        $this->name = $dto->name;
-        $this->owner_id = $dto->ownerId;
-        $this->rate = $dto->rate;
-        $this->currency_id = $dto->currencyId;
-        $this->bid = $dto->bid;
-
-        $this->save();
+        $this->name = $name;
 
         return $this;
     }
 
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-
-    public function setOwnerId(int $ownerId): void
+    public function setOwnerId(int $ownerId): self
     {
         $this->owner_id = $ownerId;
+
+        return $this;
     }
 
-    public function setRate(int $rate): void
+    public function setRate(int $rate): self
     {
         $this->rate = $rate;
+
+        return $this;
     }
 
-    public function setCurrencyId(int $currencyId): void
+    public function setCurrencyId(int $currencyId): self
     {
         $this->currency_id = $currencyId;
+
+        return $this;
     }
 
-    public function setBid($bid): void
+    public function setBid($bid): self
     {
         $this->bid = $bid;
+
+        return $this;
     }
     public function owner(): BelongsTo
     {

@@ -2,19 +2,17 @@
 
 namespace App\Models;
 
-use App\Services\Project\Dto\ProjectDto;
-use App\Services\Project\Dto\ProjectUpdateDto;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 /**
  * @property int $id;
  * @property string $name;
  * @property int $owner_id;
  * @property int $rate;
  * @property int $currency_id;
- * @property $bid;
+ * @property int $bid;
  */
 
 class Project extends Model
@@ -49,12 +47,13 @@ class Project extends Model
         return $this;
     }
 
-    public function setBid($bid): self
+    public function setBid(int $bid): self
     {
         $this->bid = $bid;
 
         return $this;
     }
+
     public function owner(): BelongsTo
     {
         return $this->belongsTo(Member::class, 'owner_id');
@@ -63,5 +62,10 @@ class Project extends Model
     public function currency(): BelongsTo
     {
         return $this->belongsTo(Currency::class, 'currency_id');
+    }
+
+    public function members(): BelongsToMany
+    {
+        return $this->belongsToMany(Member::class, 'member_projects', 'project_id');
     }
 }

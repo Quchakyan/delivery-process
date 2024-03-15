@@ -4,12 +4,11 @@ namespace App\Services\Team\Dto;
 
 use App\Http\Requests\Team\TeamRequest;
 
-/**
- * @property string $name;
- * @property int $ownerId;
- */
 class TeamDto
 {
+    protected string $name;
+    protected int $ownerId;
+
     public function __construct(TeamRequest $request)
     {
         $this->name = $request->getName();

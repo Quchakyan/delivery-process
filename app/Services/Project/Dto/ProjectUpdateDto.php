@@ -4,12 +4,11 @@ namespace App\Services\Project\Dto;
 
 use App\Http\Requests\Project\UpdateProjectRequest;
 
-/**
- * @property int $id;
- */
 
 class ProjectUpdateDto extends ProjectDto
 {
+    protected int $id;
+
     public function __construct(UpdateProjectRequest $request)
     {
         $this->id = $request->getId();

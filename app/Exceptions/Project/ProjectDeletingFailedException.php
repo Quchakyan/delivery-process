@@ -7,7 +7,6 @@ use Exception;
 
 class ProjectDeletingFailedException extends BusinessLogicException
 {
-
     public function getStatus(): int
     {
         return BusinessLogicException::DELETING_ERROR;

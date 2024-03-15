@@ -4,11 +4,9 @@ namespace App\Services\Member\Dto;
 
 use App\Http\Requests\Member\UpdateMemberRequest;
 
-/**
- * @property int $id;
- */
 class UpdateMemberDto extends MemberDto
 {
+    protected int $id;
     public function __construct(UpdateMemberRequest $request)
     {
         parent::__construct($request);

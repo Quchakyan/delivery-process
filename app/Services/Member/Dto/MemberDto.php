@@ -4,17 +4,14 @@ namespace App\Services\Member\Dto;
 
 use App\Http\Requests\Member\MemberRequest;
 
-/**
- * @property string $name;
- * @property string $lastname;
- * @property int $roleId;
- * @property int $positionId;
- * @property int|null $mentorId;
- * @property int $manualBusyness;
- */
-
 class MemberDto
 {
+    protected string $name;
+    protected string $lastname;
+    protected int $roleId;
+    protected int $positionId;
+    protected int|null $mentorId;
+    protected int $manualBusyness;
     public function __construct(MemberRequest $request)
     {
         $this->name = $request->getName();

@@ -4,15 +4,13 @@ namespace App\Services\Project\Dto;
 
 use App\Http\Requests\Project\ProjectRequest;
 
-/**
- * @property string $name;
- * @property int $ownerId;
- * @property float $rate;
- * @property int $currencyId;
- * @property int $bid;
- */
 class ProjectDto
 {
+    protected string $name;
+    protected int $ownerId;
+    protected float $rate;
+    protected int $currencyId;
+    protected int $bid;
     public function __construct(ProjectRequest $request)
     {
         $this->name = $request->getName();

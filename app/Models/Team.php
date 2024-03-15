@@ -4,10 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Services\Team\Dto\TeamDto;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property string $name;
@@ -30,6 +28,11 @@ class Team extends Model
         $this->owner_id = $ownerId;
 
         return $this;
+    }
+
+    public function owner(): BelongsTo
+    {
+        return $this->belongsTo(Member::class, 'owner_id');
     }
 
     public function teammates(): BelongsToMany

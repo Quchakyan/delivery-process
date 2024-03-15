@@ -21,17 +21,27 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('/member')->group(function () {
-    Route::post('', [MemberController::class, 'create']);
-    Route::patch('',[MemberController::class, 'update']);
+    Route::post('/add', [MemberController::class, 'create'])->name('member_add');
+    Route::post('/update',[MemberController::class, 'update']);
+    Route::post('/{id}/delete', [MemberController::class, 'delete']);
 });
 
 Route::prefix('/project')->group(function () {
-    Route::post('', [ProjectController::class, 'create']);
-    Route::patch('', [ProjectController::class, 'update']);
+    Route::post('', [ProjectController::class, 'create'])->name('project_add');
+    Route::post('/update', [ProjectController::class, 'update'])->name('project_update');
+    Route::post('/{id}/delete', [ProjectController::class, 'delete']);
 });
 
-Route::get('/testindex', [MemberController::class, 'index']);
-Route::get('/testmentors', [MemberController::class, 'getWithStudents']);
-Route::get('/testprojects', [ProjectController::class, 'index']);
-Route::post('/testteam', [TeamController::class, 'create']);
-Route::post('testteammembers', [TeamController::class, 'operateTeammates']);
+Route::prefix('/team')->group(function () {
+    Route::post('/add', [TeamController::class, 'create'])->name('team_add');
+    Route::post('/operate', [TeamController::class, 'operateTeam'])->name('team_operate');
+    Route::post('/{id}/delete', [TeamController::class, 'delete']);
+});
+
+Route::prefix('mentor')->group(function () {
+    Route::post('/add', [MemberController::class, 'createMentorStudents'])->name('mentor_add');
+    Route::post('/operate', [MemberController::class, 'operateMentorStudents'])->name('mentor_operate');
+    Route::post('{id}/delete', [MemberController::class, 'resetMentor']);
+});
+
+Route::post('member-projects', [MemberController::class, 'handleMemberProjects']);

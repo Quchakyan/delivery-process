@@ -19,6 +19,6 @@ class UpdateMemberAction
      */
     public function run(UpdateMemberDto $dto): Member
     {
-        return $this->memberWriteRepository->create($dto);
+        return $this->memberWriteRepository->update($dto);
     }
 }

@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #2d3748;
+}
+
+html,body {
+    height: 100%;
+}
+
+.menu {
+    display: flex;
+    height: 60px;
+    background-color: #a0aec0;
+}
+
+.menu-ul {
+    padding-left: 20px;
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.menu-ul li {
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+    user-select: none;
+    font-size: 18px;
+    color: black;
+}
+.menu-ul a {
+    text-decoration: none;
+}
+.menu-ul li:hover {
+    background-color: #718096;
+    color: #e2e8f0;
+    cursor: pointer;
+}
+
+#container {
+    padding: 20px;
+}
+
+.member-div {
+    display: flex;
+    height: 40px;
+    border-bottom: 1px solid #a0aec0;
+    align-items: center;
+    width: 560px;
+    font-size: 18px;
+}
+
+.member-name {
+    width: 400px;
+}
+
+.member-edit {
+    display: flex;
+    width: 80px;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.member-edit img {
+    cursor: pointer;
+}
+
+.page-title {
+    font-weight: 400;
+    margin-bottom: 24px;
+}
+
+.add-part {
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.add-btn {
+    background-color: #e2e8f0;
+    padding: 4px 20px;
+    border:none;
+    color: #4a5568;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.add-btn:hover {
+    color: #2d3748;
+    cursor: pointer;
+}
+
+.add-btn:focus {
+    border: none;
+}
+
+.project-div {
+    width: 600px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    border-bottom: 1px solid #a0aec0;
+}
+
+.flex-div {
+    display: flex;
+    padding: 40px 0;
+    gap: 80px;
+}
+
+#adding-div {
+    margin: 12px 0;
+    display: none;
+}
+
+.form-select {
+    margin: 0 12px;
+    padding: 0 8px;
+}
+
+.active {
+    font-size: 20px;
+    font-weight: bolder;
+    color: red;
+}
+
+.table img {
+    cursor: pointer;
+}
+
+.window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 20px;
+    box-shadow: 0 0 4px grey;
+    background-color: #edf2f7;
+    padding: 20px;
+}
+
+.btn-flex {
+    display: flex;
+    justify-content: space-around;
+}

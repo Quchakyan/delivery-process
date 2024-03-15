@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-use App\Services\Member\Dto\MemberDto;
-use App\Services\Member\Dto\UpdateMemberDto;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * @property int $id;
@@ -79,5 +77,20 @@ class Member extends Model
     public function students(): HasMany | null
     {
         return $this->hasMany(Member::class, 'mentor_id');
+    }
+
+    public function ownProjects(): HasMany | null
+    {
+        return $this->hasMany(Project::class, 'owner_id');
+    }
+
+    public function projects(): BelongsToMany
+    {
+        return $this->belongsToMany(Project::class, 'member_projects', 'member_id');
+    }
+
+    public function projectStats(): HasMany
+    {
+        return $this->hasMany(MemberProject::class, 'member_id');
     }
 }

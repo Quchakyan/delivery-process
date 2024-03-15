@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Write\Project;
 
-use App\Exceptions\MemberExceptions\MemberNotSavedException;
 use App\Exceptions\Project\ProjectDeletingFailedException;
 use App\Exceptions\ProjectExceptions\ProjectNotSavedException;
 use App\Models\Project;
@@ -49,7 +48,7 @@ class ProjectWriteRepository implements ProjectWriteRepositoryInterface
     /**
      * @throws ProjectNotSavedException
      */
-    public function operateProject(Project $project, ProjectDto $dto): Project
+    private function operateProject(Project $project, ProjectDto $dto): Project
     {
         $project->setName($dto->getName())
             ->setOwnerId($dto->getOwnerId())
@@ -67,7 +66,7 @@ class ProjectWriteRepository implements ProjectWriteRepositoryInterface
      */
     public function delete(int $id): void
     {
-        $query = $this->query()->find($id);
+        $query = $this->query()->where('id',$id);
 
         $query->exists() && !$query->delete() && throw new ProjectDeletingFailedException();
     }

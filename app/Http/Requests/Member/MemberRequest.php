@@ -12,6 +12,7 @@ class MemberRequest extends FormRequest
     const POSITION_ID = 'position_id';
     const MENTOR_ID = 'mentor_id';
     const MANUAL_BUSYNESS = 'manual_busyness';
+
     public function authorize(): bool
     {
         return true;

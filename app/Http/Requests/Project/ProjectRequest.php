@@ -35,7 +35,8 @@ class ProjectRequest extends FormRequest
                 'required'
             ],
             self::BID => [
-                'required'
+                'required',
+                'integer'
             ]
         ];
     }
